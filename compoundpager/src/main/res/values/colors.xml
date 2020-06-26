@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pager_background">#ffffff</color>
+    <color name="pager_tab_selected_text_color">#3949AB</color>
+    <color name="pager_tab_indicator_color">#3949AB</color>
+</resources>
