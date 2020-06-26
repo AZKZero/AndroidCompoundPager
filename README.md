@@ -2,8 +2,6 @@
 
 A custom pager component to help you easily create sliders with your own layouts and indicators.
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidCompoundPager-blue.svg?style=flat)]()
-
 [![Build](https://img.shields.io/badge/Build-1.0.0-orange.svg?style=flat)]()
 
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
