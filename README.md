@@ -2,7 +2,11 @@
 
 A custom pager component to help you easily create sliders with your own layouts and indicators.
 
-## Badges
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidCompoundPager-blue.svg?style=flat)]()
+
+[![Build](https://img.shields.io/badge/Build-1.0.0-orange.svg?style=flat)]()
+
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Importing
 
@@ -30,13 +34,13 @@ A custom pager component to help you easily create sliders with your own layouts
         app:viewPagerHeightWrapContent="false"
         app:viewPagerHeight="500dp"
         android:id="@+id/comp"
-        app:tabIndicatorLayout="@layout/ad_tab_sel" />
+        app:tabIndicatorLayout="@layout/your_custom_layout" />
 ``` 
-* viewPagerHeightWrapContent (*boolean*) (*Untested*) (*Default **false***)
+* **viewPagerHeightWrapContent** (*boolean*) (*Untested*) (*Default **false***)
     To set the pager height as **WRAP_CONTENT**
-* viewPagerHeight (*dimension*) (*Default **300***) (*Unused if **viewPagerHeightWrapContent** is **true***)
+* **viewPagerHeight** (*dimension*) (*Default **300***) (*Unused if **viewPagerHeightWrapContent** is **true***)
     To set a fixed pager height
-* tabIndicatorLayout (*layout reference*) (*responds to state_selected*)
+* **tabIndicatorLayout** (*layout reference*) (*responds to state_selected*)
 
 ### In your activity of fragment class
 ```java
