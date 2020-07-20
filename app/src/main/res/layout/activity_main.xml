@@ -17,12 +17,59 @@
         android:textColor="#ffffff" />
 
     <com.azkzer0.compoundpager.pagercomponent.CompoundPager
+        app:otherPagersInView="true"
+        android:id="@+id/magnus9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:viewPagerHeightWrapContent="false"
-        app:viewPagerHeight="500dp"
-        android:id="@+id/comp"
-        app:tabIndicatorLayout="@layout/ad_tab_sel" />
+        app:layout_constraintBottom_toTopOf="@id/middler"
+        app:tabsPosition="top"
+        app:viewPagerHeight="0dp"
+        android:layout_margin="10dp"
+        app:viewPagerHeightWrapContent="false" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/magnus9"
+        app:layout_constraintBottom_toTopOf="@id/magnus7"
+        android:id="@+id/middler">
+
+        <com.azkzer0.compoundpager.pagercomponent.CompoundPager
+            android:id="@+id/magnus5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:otherPagersInView="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="10dp"
+            app:layout_constraintRight_toLeftOf="@id/magnus3"
+            app:tabsPosition="left"
+            app:viewPagerHeight="0dp"
+            app:viewPagerHeightWrapContent="false" />
+
+        <com.azkzer0.compoundpager.pagercomponent.CompoundPager
+            android:id="@+id/magnus3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:layout_constraintLeft_toRightOf="@id/magnus5"
+            app:otherPagersInView="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tabsPosition="right"
+            app:viewPagerHeight="0dp"
+            app:viewPagerHeightWrapContent="false" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.azkzer0.compoundpager.pagercomponent.CompoundPager
+        android:id="@+id/magnus7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:otherPagersInView="true"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/middler"
+        app:layout_constraintBottom_toTopOf="@id/add_another"
+        app:tabsPosition="bottom"
+        app:viewPagerHeight="0dp"
+        app:viewPagerHeightWrapContent="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.azkzer0.compoundpager.fragments.CompoundPagerFragment;
+import com.azkzer0.compoundpager.interfaces.DataChange;
 import com.azkzer0.compoundpager.pagercomponent.CompoundPager;
 
 import java.util.ArrayList;
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 public class CompoundPagerAdapter extends FragmentStatePagerAdapter {
 
     private ArrayList<Fragment> fragmentArrayList;
-    private CompoundPager compoundPager;
+    private DataChange compoundPager;
 
     public CompoundPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList) {
         super(fm);
         this.fragmentArrayList = fragmentArrayList;
     }
 
-    void addDataChangeReference(CompoundPager compoundPager) {
+    void addDataChangeReference(DataChange compoundPager) {
         this.compoundPager = compoundPager;
     }
 
