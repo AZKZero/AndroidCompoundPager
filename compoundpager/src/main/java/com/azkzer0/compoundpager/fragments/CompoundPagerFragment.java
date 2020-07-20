@@ -7,12 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+
 import com.azkzer0.compoundpager.R;
-import com.azkzer0.compoundpager.databinding.ImagePagerBinding;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +23,7 @@ public class CompoundPagerFragment extends Fragment {
     private String adURL = "";
     private String imageURL = "";
     public static final String TAG = "CompoundPagerFragment";
+    private ImageView pageImage;
 
     public CompoundPagerFragment() {
     }
@@ -47,8 +49,7 @@ public class CompoundPagerFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.image_pager, container, false);
-        ImagePagerBinding imagePagerBinding = DataBindingUtil.bind(view);
-        assert imagePagerBinding != null;
+        pageImage = view.findViewById(R.id.pageImage);
 
         if (getArguments() != null) {
             for (String string :
@@ -59,7 +60,7 @@ public class CompoundPagerFragment extends Fragment {
         }
 
         if (imageURL != null && !imageURL.isEmpty()) {
-            Picasso.get().load(imageURL).into(imagePagerBinding.pageImage, new Callback() {
+            Picasso.get().load(imageURL).into(pageImage, new Callback() {
                 @Override
                 public void onSuccess() {
                     Log.i(TAG, "onSuccess: ");
