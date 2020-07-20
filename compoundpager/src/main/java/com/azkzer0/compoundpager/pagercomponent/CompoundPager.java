@@ -8,10 +8,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
+
 import com.azkzer0.compoundpager.R;
-import com.azkzer0.compoundpager.databinding.ComponentImagepagerBinding;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -21,13 +22,17 @@ public class CompoundPager extends ConstraintLayout {
     TabLayout tabLayout;
 
     private int tabSelectorLayout;
-    private ComponentImagepagerBinding componentImagepagerBinding;
     private Runnable runnable;
     private Handler handler;
     private CompoundPagerAdapter compoundPagerAdapter;
     private int counter = 0;
     private int milliSeconds = 0;
     public static final String TAG = "CompoundPager";
+
+    private static final int TOP = 0;
+    private static final int BOTTOM = 1;
+    private static final int LEFT = 2;
+    private static final int RIGHT = 3;
 
     public CompoundPager(Context context) {
         super(context);
@@ -40,21 +45,25 @@ public class CompoundPager extends ConstraintLayout {
     }
 
     private void initView(AttributeSet attrs) {
-        View inflated = inflate(getContext(), R.layout.component_imagepager, this);
-        processAttributes(getContext().obtainStyledAttributes(attrs, R.styleable.CompoundPager), inflated);
+        processAttributes(getContext().obtainStyledAttributes(attrs, R.styleable.CompoundPager));
     }
 
-    private void processAttributes(TypedArray obtainedStyledAttributes, View inflated) {
-        /*componentImagepagerBinding = DataBindingUtil.bind(inflated);
+    private void processAttributes(TypedArray obtainedStyledAttributes) {
 
-        assert componentImagepagerBinding != null;*/
+        int pagerLayout = obtainedStyledAttributes.getResourceId(R.styleable.CompoundPager_pagerLayout, R.layout.component_imagepager);
+
+        View inflated = inflate(getContext(), pagerLayout, this);
+
+        int position = obtainedStyledAttributes.getInt(R.styleable.CompoundPager_tabsPosition, 1);
+
+        tabLayout = inflated.findViewById(R.id.tab_layout_image_pager_bottom);
+
+        showTabPosition(position, inflated);
 
         viewPager = inflated.findViewById(R.id.image_pager);
-        tabLayout = inflated.findViewById(R.id.tab_layout_image_pager);
 
         boolean viewPagerHeightWrapContent = obtainedStyledAttributes.getBoolean(R.styleable.CompoundPager_viewPagerHeightWrapContent, false);
         int viewPagerHeightI = obtainedStyledAttributes.getDimensionPixelSize(R.styleable.CompoundPager_viewPagerHeight, 300);
-        /*componentImagepagerBinding.imagePager*/
         viewPager.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewPagerHeightWrapContent ? ViewGroup.LayoutParams.WRAP_CONTENT : viewPagerHeightI));
 
         tabSelectorLayout = obtainedStyledAttributes.getResourceId(R.styleable.CompoundPager_tabIndicatorLayout, R.layout.default_tab_select);
@@ -64,6 +73,36 @@ public class CompoundPager extends ConstraintLayout {
     public CompoundPager(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
+    }
+
+    private void showTabPosition(int position, View inflated) {
+        switch (position) {
+            case TOP:
+                tabLayout = inflated.findViewById(R.id.tab_layout_image_pager_top);
+                inflated.findViewById(R.id.tab_layout_image_pager_bottom).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_right).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_left).setVisibility(View.GONE);
+                break;
+            default:
+            case BOTTOM:
+                tabLayout = inflated.findViewById(R.id.tab_layout_image_pager_bottom);
+                inflated.findViewById(R.id.tab_layout_image_pager_top).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_right).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_left).setVisibility(View.GONE);
+                break;
+            case LEFT:
+                tabLayout = inflated.findViewById(R.id.tab_layout_image_pager_left);
+                inflated.findViewById(R.id.tab_layout_image_pager_top).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_right).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_bottom).setVisibility(View.GONE);
+                break;
+            case RIGHT:
+                tabLayout = inflated.findViewById(R.id.tab_layout_image_pager_right);
+                inflated.findViewById(R.id.tab_layout_image_pager_top).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_bottom).setVisibility(View.GONE);
+                inflated.findViewById(R.id.tab_layout_image_pager_left).setVisibility(View.GONE);
+                break;
+        }
     }
 
     private void initView() {

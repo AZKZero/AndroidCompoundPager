@@ -5,5 +5,11 @@
         <attr name="pagerLayout" format="reference" />
         <attr name="viewPagerHeight" format="dimension" />
         <attr name="viewPagerHeightWrapContent" format="boolean" />
+        <attr name="tabsPosition" format="enum">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+            <enum name="left" value="2" />
+            <enum name="right" value="3" />
+        </attr>
     </declare-styleable>
 </resources>
